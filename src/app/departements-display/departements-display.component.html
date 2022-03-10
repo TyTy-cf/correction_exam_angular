@@ -1,0 +1,19 @@
+<table class="table table-striped table-hover table-dark mt-3">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Code</th>
+    <th>Code région</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let departement of arrayDepartement"
+      class="router-link"
+      routerLink="/region/{{departement.codeRegion}}/departements/{{departement.code}}/communes"
+  >
+    <td>{{departement.nom}}</td>
+    <td>{{departement.code}}</td>
+    <td>{{departement.codeRegion}}</td>
+  </tr>
+  </tbody>
+</table>

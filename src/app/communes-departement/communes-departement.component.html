@@ -1,0 +1,54 @@
+
+
+<div *ngIf="region && departement; else noRegions">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" >
+        <a routerLink="/">
+          Regions
+        </a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <a routerLink="/region/{{region.code}}/departements">
+          Départements - {{ region.nom }}
+        </a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Communes - {{ departement.nom }}
+      </li>
+    </ol>
+  </nav>
+
+  <table class="table table-striped table-hover table-dark mt-3">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Code INSEE</th>
+      <th>Code région</th>
+      <th>Code département</th>
+      <th>Population</th>
+      <th>Codes postaux</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let commune of arrayCommunes">
+      <td>{{commune.nom}}</td>
+      <td>{{commune.code}}</td>
+      <td>{{commune.codeRegion}}</td>
+      <td>{{commune.codeDepartement}}</td>
+      <td>{{commune.population}}</td>
+      <td>
+        <ul class="list-unstyled">
+          <li *ngFor="let codePostal of commune.codesPostaux">
+            {{codePostal}}
+          </li>
+        </ul>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noRegions>
+  <p>Ce code de région n'existe pas</p>
+</ng-template>

@@ -1,0 +1,26 @@
+
+<div *ngIf="region; else noRegions">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" >
+        <a routerLink="/">
+          Regions
+        </a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Départements - {{ region.nom }}
+      </li>
+    </ol>
+    <a  class="btn btn-primary text-decoration-none"
+        routerLink="/departements"
+    >
+      Voir tout
+    </a>
+  </nav>
+
+  <app-departements-display [arrayDepartement]="arrayDepartements"></app-departements-display>
+</div>
+
+<ng-template #noRegions>
+  <p>Ce code de région n'existe pas</p>
+</ng-template>
